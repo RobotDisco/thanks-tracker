@@ -1,5 +1,11 @@
 (defsystem "thanks-tracker"
+    :author "Gaelan D'costa <gdcosta@gmail.com>"
+    :maintainer "Gaelan D'costa <gdcosta@gmail.com>"
     :version "0.0.0"
-    :author "Gaelan D'costa"
     :license "General Public License, Version 3 (see file COPYING for details)"
-    :description "A service to give people thanks in mattermost channels")
+    :homepage "https://github.com/RobotDisco/thanks-tracker"
+    :bug-tracker "https://github.com/RobotDisco/thanks-tracker/issues"
+    :source-control (:git "git@github.com:RobotDisco/thanks-tracker.git")
+    :description "A service to give people thanks in mattermost channels"
+    :long-description #.(uiop:read-file-string
+			 (uiop:subpathname *load-pathname* "README.org")))
