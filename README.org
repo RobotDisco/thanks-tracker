@@ -1,0 +1,14 @@
+* Thanks Tracker
+
+  A service for mattermost where you can give kudos and praise to your team-mates, and you can see the kudos you have been given.
+
+** Installation
+   TODO
+** Usage
+   TODO 
+** Contributing
+   Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+   Please make sure to update tests as appropriate.
+** License
+   [[https://www.gnu.org/licenses/gpl-3.0.en.html][GPLv3]]
