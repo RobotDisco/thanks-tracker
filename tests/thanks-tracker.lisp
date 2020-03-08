@@ -30,4 +30,4 @@
     (let ((oldsize (length (thanks-tracker:kudos gaelan-doc)))
 	  (newsize (length (thanks-tracker:kudos (thanks-tracker:add-kudos gaelan-doc
 									   gaelan-kudos)))))
-      (ok (= newsize (+ oldsize 1))))))
+      (ok (= newsize (1+ oldsize))))))

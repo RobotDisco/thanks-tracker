@@ -1,19 +1,19 @@
 (defpackage thanks-tracker
   (:use :cl)
-  (:export :make-doc
-	   :make-kudos
-	   :thankee
-	   :kudos
-	   :kudos-thanker
-	   :kudos-message
-	   :kudos-date
-	   :add-kudos))
+  (:export make-doc
+	   make-kudos
+	   thankee
+	   kudos
+	   kudos-thanker
+	   kudos-message
+	   kudos-date
+	   add-kudos))
 
 (in-package :thanks-tracker)
 
 (defun make-doc (id)
   (list (cons '_id id)
-	(cons 'kudos ())))
+	(list 'kudos)))
 
 (defun make-kudos (thanker msg date)
   (list (cons '_id thanker)
