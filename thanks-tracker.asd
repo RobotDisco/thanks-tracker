@@ -8,4 +8,6 @@
     :source-control (:git "git@github.com:RobotDisco/thanks-tracker.git")
     :description "A service to give people thanks in mattermost channels"
     :long-description #.(uiop:read-file-string
-			 (uiop:subpathname *load-pathname* "README.org")))
+			 (uiop:subpathname *load-pathname* "README.org"))
+    :components ((:module "src"
+		  :components ((:file "thanks-tracker")))))
