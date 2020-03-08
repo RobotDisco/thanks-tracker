@@ -11,13 +11,6 @@
 
 (in-package :thanks-tracker)
 
-(defparameter gaelan-doc '((_id . "gaelan@tulip.com")
-			   (kudos . (((_id . "gaelan@tulip.com")
-				      (message . "for doing absolutely nothing.")
-				      (date . (2020 3 7)))))))
-
-
-
 (defun make-doc (id)
   (list (cons '_id id)
 	(cons 'kudos ())))
