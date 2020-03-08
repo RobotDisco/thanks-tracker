@@ -1,6 +1,9 @@
 (defpackage thanks-tracker
   (:use :cl)
-  (:export :-main))
+  (:export :make-doc
+	   :thankee
+	   :kudos
+	   :-main))
 
 (in-package :thanks-tracker)
 
@@ -11,6 +14,10 @@
 			   (kudos . (((_id . "gaelan@tulip.com")
 				      (message . "for doing absolutely nothing.")
 				      (date . (2020 3 7)))))))
+
+(defun make-doc (id)
+  (list (cons '_id id)
+	(cons 'kudos ())))
 
 (defun thankee (doc)
   (cdr (assoc '_id doc)))
