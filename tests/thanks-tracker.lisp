@@ -1,11 +1,15 @@
+;;;; The main test collection for kudos-tracker.
+;;;;
+;;;; To run this test file, execute `(asdf:test-system :thanks-tracker)' in your Lisp.
+
 (defpackage thanks-tracker/tests/thanks-tracker
+  (:documentation "The main test collection for kudos-tracker")
   (:use :cl
 	:thanks-tracker
 	:rove))
 
 (in-package :thanks-tracker/tests/thanks-tracker)
 
-;; NOTE: To run this test file, execute `(asdf:test-system :thanks-tracker)' in your Lisp.
 (defparameter +gaelan-doc+ (thanks-tracker:make-doc "gaelan@example.com"))
 (defparameter +gaelan-kudos+ (make-kudos "gaelan@example.com"
 				       "for doing absolutely nothing."
