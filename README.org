@@ -3,9 +3,11 @@
   A service for mattermost where you can give kudos and praise to your team-mates, and you can see the kudos you have been given.
 
 ** Installation
-   TODO
+   Install [[http://www.sbcl.org/][Steel Bank Common Lisp]] via your package manager of choice, I have not done the work (or even know how yet) to make this software run against multiple Common Lisp runtimes.
 ** Usage
-   TODO 
+   TODO There's no product yet to use :)
+** Testing
+   Run ~make test~ to run what unit tests are currently included.
 ** Contributing
    Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
