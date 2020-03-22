@@ -10,9 +10,9 @@
 (defun -run ()
   (hunchentoot:start (make-instance 'hunchentoot:easy-acceptor :port 5000))
   (hunchentoot:define-easy-handler (slash-command :uri "/") (command text)
-  (setf (hunchentoot:content-type*) "text/json")
-  (json:encode-json (list
-		     (cons 'command command)
-		     (cons 'text text)))))
+    (setf (hunchentoot:content-type*) "application/json")
+    (json:encode-json-alist-to-string (list
+				       (cons 'text "Your gratitude has been stored :)")
+				       (cons 'username "thanks-tracker")))))
 
 ; (defun -stop ())
