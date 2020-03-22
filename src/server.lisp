@@ -14,12 +14,17 @@
 
 (defvar *handler* nil)
 
+(defun app (env)
+  (declare (ignore env))
+  '(200 (:content-type "text/plain") ("Hello, Clack!")))
+
 (defun -run ()
-  (clack:clackup
-   (lambda (env)
-     (declare (ignore env))
-     '(200 (:content-type "text/plain") ("Hello, Clack!")))))
+  (setq *handler* (clack:clackup #'app)))
 
 (defun -stop ()
   (when *handler*
     (clack:stop *handler*)))
+
+
+(-stop)
+(-run)
