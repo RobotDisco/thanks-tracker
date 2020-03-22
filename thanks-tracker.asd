@@ -12,8 +12,8 @@
   :components ((:module "src" :components ((:file "thanks-tracker")
 					   (:file "server"))))
   :in-order-to ((test-op (test-op "thanks-tracker/tests")))
-  :depends-on ("hunchentoot" "clack")
-  :entry-point "thanks-tracker-server:run")
+  :depends-on ("hunchentoot")
+  :entry-point "thanks-tracker-server:-run")
 
 (defsystem "thanks-tracker/tests"
   :author "Gaelan D'costa <gdcosta@gmail.com>"

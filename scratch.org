@@ -1,5 +1,5 @@
 #+BEGIN_SRC http :prettyy
-GET http://localhost:5000
+POST http://localhost:5000
 Accept: text/json
 Host: example.com
 User-Agent: Go-http-client/1.1
@@ -24,9 +24,10 @@ user_name=somename
 
 #+RESULTS:
 : HTTP/1.1 200 OK
-: Date: Sun, 22 Mar 2020 02:48:55 GMT
+: Content-Length: 9
+: Date: Sun, 22 Mar 2020 18:25:06 GMT
 : Server: Hunchentoot 1.2.38
-: Transfer-Encoding: chunked
-: Content-Type: text/plain
+: Content-Type: text/plain; charset=utf-8
 : 
-: Hello, Clack!
+: /test
+: asd

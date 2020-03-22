@@ -3,8 +3,7 @@
 (defpackage thanks-tracker-server
   (:documentation "The server handlers for kudos-tracker.")
   (:use :cl)
-  (:export #:-run
-	   #:-stop))
+  (:export #:-run))
 
 (in-package :thanks-tracker-server)
 
@@ -12,19 +11,10 @@
   '(("Gaelan is awesome")
     ("Gaelan continues to be awesome")))
 
-(defvar *handler* nil)
-
-(defun app (env)
-  (declare (ignore env))
-  '(200 (:content-type "text/plain") ("Hello, Clack!")))
-
 (defun -run ()
-  (setq *handler* (clack:clackup #'app)))
+  (hunchentoot:start (make-instance 'hunchentoot:easy-acceptor :port 5000))
+  (hunchentoot:define-easy-handler (slash-command :uri "/") (command text)
+  (setf (hunchentoot:content-type*) "text/plain")
+  (format nil "~A~%~A" command text)))
 
-(defun -stop ()
-  (when *handler*
-    (clack:stop *handler*)))
-
-
-(-stop)
-(-run)
+; (defun -stop ())
