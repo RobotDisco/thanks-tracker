@@ -12,7 +12,7 @@
   :components ((:module "src" :components ((:file "thanks-tracker")
 					   (:file "server"))))
   :in-order-to ((test-op (test-op "thanks-tracker/tests")))
-  :depends-on ("hunchentoot")
+  :depends-on ("hunchentoot" "cl-json")
   :entry-point "thanks-tracker-server:-run")
 
 (defsystem "thanks-tracker/tests"

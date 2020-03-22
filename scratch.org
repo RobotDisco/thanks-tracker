@@ -1,33 +1,26 @@
-#+BEGIN_SRC http :prettyy
-POST http://localhost:5000
-Accept: text/json
-Host: example.com
-User-Agent: Go-http-client/1.1
-Content-Length: 313
-Accept: application/json
-Authorization: Token okwexkjpe7ygb8eq1ww58t483w
-Content-Type: application/x-www-form-urlencoded
-Accept-Encoding: gzip
+* Use cases
+** Thanking someone
+ #+BEGIN_SRC http :pretty
+ POST http://localhost:5000
+ Accept: text/json
+ Host: example.com
+ User-Agent: Go-http-client/1.1
+ Content-Length: 313
+ Accept: application/json
+ Authorization: Token okwexkjpe7ygb8eq1ww58t483w
+ Content-Type: application/x-www-form-urlencoded
+ Accept-Encoding: gzip
 
-channel_id=jux16pkewjrkfj3ehep1psxyxc&
-channel_name=town-square&
-command=%2Ftest&
-response_url=http%3A%2F%2Flocalhost%3A8065%2Fhooks%2Fcommands%2Fxbrkb8p393gjpq5cawei7npije&
-team_domain=test&
-team_id=carya1qs77bemjup96ff538snh&
-text=asd&
-token=okwexkjpe7ygb8eq1ww58t483w&
-user_id=aoa1agao6t8fmx3ikt1j9w5ybw&
-user_name=somename
+ channel_id=jux16pkewjrkfj3ehep1psxyxc&
+ channel_name=town-square&
+ command=%2Fthank&
+ response_url=http%3A%2F%2Flocalhost%3A8065%2Fhooks%2Fcommands%2Fxbrkb8p393gjpq5cawei7npije&
+ team_domain=test&
+ team_id=carya1qs77bemjup96ff538snh&
+ text=gaelan+for+being+awesome&
+ token=okwexkjpe7ygb8eq1ww58t483w&
+ user_id=aoa1agao6t8fmx3ikt1j9w5ybw&
+ user_name=somename
+ #+END_SRC
 
-#+END_SRC
-
-#+RESULTS:
-: HTTP/1.1 200 OK
-: Content-Length: 9
-: Date: Sun, 22 Mar 2020 18:25:06 GMT
-: Server: Hunchentoot 1.2.38
-: Content-Type: text/plain; charset=utf-8
-: 
-: /test
-: asd
+ #+RESULTS:
