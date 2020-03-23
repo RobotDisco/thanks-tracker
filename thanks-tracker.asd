@@ -5,15 +5,16 @@
   :license "General Public License, Version 3 (see file COPYING for details)"
   :homepage "https://github.com/RobotDisco/thanks-tracker"
   :bug-tracker "https://github.com/RobotDisco/thanks-tracker/issues"
-  :source-control (:git "git@github.com:RobotDisco/thanks-tracker.git")
   :description "A service to give people thanks in mattermost channels"
   :long-description #.(uiop:read-file-string
 		       (uiop:subpathname *load-pathname* "README.org"))
   :components ((:module "src" :components ((:file "thanks-tracker")
 					   (:file "server"))))
   :in-order-to ((test-op (test-op "thanks-tracker/tests")))
-  :depends-on ("hunchentoot" "cl-json")
-  :entry-point "thanks-tracker-server:-run")
+  :depends-on ("bordeaux-threads" "hunchentoot" "cl-json")
+  :build-operation "program-op"
+  :build-pathname "bin/thanks-tracker"
+  :entry-point "thanks-tracker-server:main")
 
 (defsystem "thanks-tracker/tests"
   :author "Gaelan D'costa <gdcosta@gmail.com>"
