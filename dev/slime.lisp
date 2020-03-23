@@ -1,2 +1,3 @@
 (quicklisp:quickload "thanks-tracker")
-(thanks-tracker-server:-run)
+(in-package #:thanks-tracker-server)
+(start-app)
