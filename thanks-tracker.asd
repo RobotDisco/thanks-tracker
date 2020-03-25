@@ -8,7 +8,7 @@
   :description "A service to give people thanks in mattermost channels"
   :long-description #.(uiop:read-file-string
 		       (uiop:subpathname *load-pathname* "README.org"))
-  :components ((:module "src" :components ((:file "thanks-tracker")
+  :components ((:module "src" :components ((:file "db")
 					   (:file "server"))))
   :in-order-to ((test-op (test-op "thanks-tracker/tests")))
   :depends-on ("bordeaux-threads" "hunchentoot" "cl-json")
