@@ -14,7 +14,7 @@
 	(t (dispatch-thanks text))))
 
 (defun dispatch-thanks (text)
-  (setf (hunchentoot:content-type*) "application/text")
+  (setf (hunchentoot:content-type*) "application/json")
   (thanks-tracker-db:add-kudos "user@example.com" "sample text")
   (json:encode-json-alist-to-string (list
 				     (cons 'text "Your gratitude has been stored :)")
