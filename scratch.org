@@ -1,3 +1,11 @@
+* Preamble
+  Execute this to get this document working
+
+  #+begin_src emacs-lisp :tangle yes
+    (org-babel-do-load-languages 'org-babel-load-languages
+				 '((emacs-lisp . t)
+				   (http . t)))
+  #+end_src
 * Use cases
 ** Thanking someone
  #+BEGIN_SRC http :pretty
@@ -24,7 +32,4 @@
  #+END_SRC
 
  #+RESULTS:
- : {
- :   "text": "Your gratitude has been stored :)",
- :   "username": "thanks-tracker"
- : }
+ : {"text":"Your gratitude has been stored :)","username":"thanks-tracker"}
