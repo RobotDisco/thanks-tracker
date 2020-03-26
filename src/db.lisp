@@ -17,9 +17,17 @@
   "Add a new message of gratitude to the DB"
   (push (cons id message) *db*))
 
+(defun kudos-to-markdown-table-row (kudos)
+  (let ((id (car kudos))
+	(message (cdr kudos)))
+    (format nil "| ~A | ~A |" id message)))
+
 (defun to-markdown ()
   (let ((header (format nil "~A~%~A"
 			"Here are all the people who have thanked you!"
 			"| Thanker | Message |"))
-	)
-    header))
+	(table-content (format nil "~A"
+			       (mapcar #'kudos-to-markdown-table-row
+				     *db*))))
+    (format nil "~A~%~A~%" header table-content)))
+
