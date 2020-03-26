@@ -33,3 +33,32 @@
 
  #+RESULTS:
  : {"text":"Your gratitude has been stored :)","username":"thanks-tracker"}
+** Unknown command
+ #+BEGIN_SRC http :pretty
+ POST http://localhost:5000
+ Accept: application/json
+ Host: example.com
+ User-Agent: Go-http-client/1.1
+ Content-Length: 313
+ Accept: application/json
+ Authorization: Token okwexkjpe7ygb8eq1ww58t483w
+ Content-Type: application/x-www-form-urlencoded
+ Accept-Encoding: gzip
+
+ channel_id=jux16pkewjrkfj3ehep1psxyxc&
+ channel_name=town-square&
+ command=%2Funknown&
+ response_url=http%3A%2F%2Flocalhost%3A8065%2Fhooks%2Fcommands%2Fxbrkb8p393gjpq5cawei7npije&
+ team_domain=test&
+ team_id=carya1qs77bemjup96ff538snh&
+ text=gaelan+for+being+awesome&
+ token=okwexkjpe7ygcb8eq1ww58t483w&
+ user_id=aoa1agao6t8fmx3ikt1j9w5ybw&
+ user_name=somename
+ #+END_SRC
+
+ #+RESULTS:
+ : {
+ :   "username": "thanks-tracker",
+ :   "text": "I'm sorry, I don't understand the command "
+ : }

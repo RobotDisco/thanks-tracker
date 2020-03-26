@@ -11,7 +11,7 @@
 
 (defun handle-request (command text)
   (cond ((eql command "thank") (dispatch-thanks text))
-	(t (dispatch-thanks text))))
+	(t (dispatch-help command))))
 
 (defun dispatch-thanks (text)
   (setf (hunchentoot:content-type*) "application/json")
@@ -19,6 +19,18 @@
   (json:encode-json-alist-to-string (list
 				     (cons 'text "Your gratitude has been stored :)")
 				     (cons 'username "thanks-tracker"))))
+
+(defun dispatch-help (command)
+  (setf (hunchentoot:content-type*) "application/json")
+  (json:encode-json-alist-to-string
+   (list
+    (cons 'username "thanks-tracker")
+    (cons 'text
+	  (format nil
+		  "I'm sorry, I don't understand the command "
+		  command
+		  " :("))))
+  )
 
 (defun start-app ()
   (unless *handler*
