@@ -10,15 +10,23 @@
 (defvar *handler* nil)
 
 (defun handle-request (command text)
-  (cond ((eql command "thank") (dispatch-thanks text))
+  (cond ((equal command "/thank") (dispatch-thanks text))
+	((equal command "/view-thanks") (dispatch-get-thanks))
 	(t (dispatch-help command))))
 
-(defun dispatch-thanks (text)
+(defun dispatch-thanks (thanks)
   (setf (hunchentoot:content-type*) "application/json")
   (thanks-tracker-db:add-kudos "user@example.com" "sample text")
   (json:encode-json-alist-to-string (list
 				     (cons 'text "Your gratitude has been stored :)")
 				     (cons 'username "thanks-tracker"))))
+
+(defun dispatch-get-thanks ()
+  (setf (hunchentoot:content-type*) "application/json")
+  (json:encode-json-alist-to-string
+   (list
+    (cons 'username "thanks-tracker")
+    (cons 'text (thanks-tracker-db:to-markdown)))))
 
 (defun dispatch-help (command)
   (setf (hunchentoot:content-type*) "application/json")
@@ -27,10 +35,8 @@
     (cons 'username "thanks-tracker")
     (cons 'text
 	  (format nil
-		  "I'm sorry, I don't understand the command "
-		  command
-		  " :("))))
-  )
+		  "I'm sorry, I don't understand the command ~A :("
+		  command)))))
 
 (defun start-app ()
   (unless *handler*

@@ -3,7 +3,8 @@
 (defpackage thanks-tracker-db
   (:documentation "The data storage logic for kudos-tracker.")
   (:use :cl)
-  (:export #:add-kudos))
+  (:export #:add-kudos
+	   #:to-markdown))
 
 (in-package :thanks-tracker-db)
 
@@ -16,4 +17,9 @@
   "Add a new message of gratitude to the DB"
   (push (cons id message) *db*))
 
-
+(defun to-markdown ()
+  (let ((header (format nil "~A~%~A"
+			"Here are all the people who have thanked you!"
+			"| Thanker | Message |"))
+	)
+    header))
