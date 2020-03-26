@@ -9,14 +9,14 @@
 
 (defvar *handler* nil)
 
-(defun handle-request (command text)
-  (cond ((equal command "/thank") (dispatch-thanks text))
+(defun handle-request (command text user_name)
+  (cond ((equal command "/thank") (dispatch-thanks text user_name))
 	((equal command "/view-thanks") (dispatch-get-thanks))
 	(t (dispatch-help command))))
 
-(defun dispatch-thanks (thanks)
+(defun dispatch-thanks (thanks user_name)
   (setf (hunchentoot:content-type*) "application/json")
-  (thanks-tracker-db:add-kudos "user@example.com" "sample text")
+  (thanks-tracker-db:add-kudos "user@example.com" "sample text" user_name)
   (json:encode-json-alist-to-string (list
 				     (cons 'text "Your gratitude has been stored :)")
 				     (cons 'username "thanks-tracker"))))
@@ -42,8 +42,8 @@
   (unless *handler*
     (setq *handler* (make-instance 'hunchentoot:easy-acceptor :port 5000)))
   (hunchentoot:start *handler*)
-  (hunchentoot:define-easy-handler (slash-command :uri "/") (command text)
-    (handle-request command text)))
+  (hunchentoot:define-easy-handler (slash-command :uri "/") (command text user_name)
+    (handle-request command text user_name)))
 
 (defun stop-app ()
   (when *handler*

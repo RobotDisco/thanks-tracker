@@ -13,13 +13,16 @@
   '()
   "database for kudos, currently a basic list")
 
-(defun add-kudos (id message)
+(defun add-kudos (thankee message thanker)
   "Add a new message of gratitude to the DB"
-  (push (cons id message) *db*))
+  (push (pairlis
+	 '(thankee message thanker)
+	 (list thankee message thanker))
+	*db*))
 
 (defun kudos-to-markdown-table-row (kudos)
-  (let ((id (car kudos))
-	(message (cdr kudos)))
+  (let ((id (cdr (assoc 'thanker kudos)))
+	(message (cdr (assoc 'message kudos))))
     (format nil "| ~A | ~A |" id message)))
 
 (defun to-markdown ()

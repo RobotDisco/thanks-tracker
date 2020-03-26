@@ -92,6 +92,6 @@ POST http://localhost:5000
  #+RESULTS:
  : {
  :   "username": "thanks-tracker",
- :   "text": "Here are all the people who have thanked you!\n| Thanker | Message |\n(| user@example.com | sample text | | user@example.com | sample text |\n | user@example.com | sample text | | user@example.com | sample text |\n | user@example.com | sample text | | user@example.com | sample text |)\n"
+ :   "text": "Here are all the people who have thanked you!\n| Thanker | Message |\n(| somename | sample text |)\n"
  : }
 
