@@ -11,7 +11,7 @@
   :components ((:module "src" :components ((:file "db")
 					   (:file "server"))))
   :in-order-to ((test-op (test-op "thanks-tracker/tests")))
-  :depends-on ("bordeaux-threads" "hunchentoot" "cl-json")
+  :depends-on ("bordeaux-threads" "hunchentoot" "cl-json" "str")
   :build-operation "program-op"
   :build-pathname "bin/thanks-tracker"
   :entry-point "thanks-tracker-server:main")

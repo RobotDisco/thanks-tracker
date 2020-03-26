@@ -7,33 +7,60 @@
 				   (http . t)))
   #+end_src
 * Use cases
-** Thanking someone
+** User1 Thanking User2
  #+BEGIN_SRC http :pretty
-POST http://localhost:5000
- Accept: application/json
- Host: example.com
- User-Agent: Go-http-client/1.1
- Content-Length: 313
- Accept: application/json
- Authorization: Token okwexkjpe7ygb8eq1ww58t483w
- Content-Type: application/x-www-form-urlencoded
- Accept-Encoding: gzip
+   POST http://localhost:5000
+   Accept: application/json
+   Host: example.com
+   User-Agent: Go-http-client/1.1
+   Accept: application/json
+   Authorization: Token okwexkjpe7ygb8eq1ww58t483w
+   Content-Type: application/x-www-form-urlencoded
+   Accept-Encoding: gzip
 
- channel_id=jux16pkewjrkfj3ehep1psxyxc&
- channel_name=town-square&
- command=%2Fthank&
- response_url=http%3A%2F%2Flocalhost%3A8065%2Fhooks%2Fcommands%2Fxbrkb8p393gjpq5cawei7npije&
- team_domain=test&
- team_id=carya1qs77bemjup96ff538snh&
- text=gaelan+for+being+awesome&
- token=okwexkjpe7ygb8eq1ww58t483w&
- user_id=aoa1agao6t8fmx3ikt1j9w5ybw&
- user_name=somename
+   channel_id=jux16pkewjrkfj3ehep1psxyxc&
+   channel_name=town-square&
+   command=%2Fthank&
+   response_url=http%3A%2F%2Flocalhost%3A8065%2Fhooks%2Fcommands%2Fxbrkb8p393gjpq5cawei7npije&
+   team_domain=test&
+   team_id=carya1qs77bemjup96ff538snh&
+   text=user2+for+being+awesome&
+   token=okwexkjpe7ygb8eq1ww58t483w&
+   user_id=aoa1agao6t8fmx3ikt1j9w5ybw&
+   user_name=user1
  #+END_SRC
 
  #+RESULTS:
  : {
- :   "text": "Your gratitude has been stored :)",
+ :   "text": "Your gratitude for user2 has been stored! Thank you for being thankful :)",
+ :   "username": "thanks-tracker"
+ : }
+** User2 Thanking User1
+ #+BEGIN_SRC http :pretty
+   POST http://localhost:5000
+   Accept: application/json
+   Host: example.com
+   User-Agent: Go-http-client/1.1
+   Accept: application/json
+   Authorization: Token okwexkjpe7ygb8eq1ww58t483w
+   Content-Type: application/x-www-form-urlencoded
+   Accept-Encoding: gzip
+
+   channel_id=jux16pkewjrkfj3ehep1psxyxc&
+   channel_name=town-square&
+   command=%2Fthank&
+   response_url=http%3A%2F%2Flocalhost%3A8065%2Fhooks%2Fcommands%2Fxbrkb8p393gjpq5cawei7npije&
+   team_domain=test&
+   team_id=carya1qs77bemjup96ff538snh&
+   text=user1+for+being+awesome&
+   token=okwexkjpe7ygb8eq1ww58t483w&
+   user_id=aoa1agao6t8fmx3ikt1j9w5ybw&
+   user_name=user2
+ #+END_SRC
+
+ #+RESULTS:
+ : {
+ :   "text": "Your gratitude for user1 has been stored! Thank you for being thankful :)",
  :   "username": "thanks-tracker"
  : }
 ** Unknown command
@@ -55,7 +82,7 @@ POST http://localhost:5000
  team_domain=test&
  team_id=carya1qs77bemjup96ff538snh&
  text=gaelan+for+being+awesome&
- token=okwexkjpe7ygcb8eq1ww58t483w&
+ token=okwexkjpe7ygb8eq1ww58t483w&
  user_id=aoa1agao6t8fmx3ikt1j9w5ybw&
  user_name=somename
  #+END_SRC
@@ -65,13 +92,41 @@ POST http://localhost:5000
  :   "username": "thanks-tracker",
  :   "text": "I'm sorry, I don't understand the command /unknown :("
  : }
-** See all thanks
+** User1 sees all thanks
  #+BEGIN_SRC http :pretty
  POST http://localhost:5000
  Accept: application/json
  Host: example.com
  User-Agent: Go-http-client/1.1
- Content-Length: 313
+ Accept: application/json
+ Authorization: Token okwexkjpe7ygb8eq1ww58t483w
+ Content-Type: application/x-www-form-urlencoded
+ Accept-Encoding: gzip
+
+ channel_id=jux16pkewjrkfj3ehep1psxyxc&
+ channel_name=town-square&
+ command=%2Fview-thanks&
+ response_url=http%3A%2F%2Flocalhost%3A8065%2Fhooks%2Fcommands%2Fxbrkb8p393gjpq5cawei7npije&
+ team_domain=test&
+ team_id=carya1qs77bemjup96ff538snh&
+ text=gaelan+for+being+awesome&
+ token=okwexkjpe7ygcb8eq1ww58t483w&
+ user_id=aoa1agao6t8fmx3ikt1j9w5ybw&
+ user_name=user1
+ #+END_SRC
+
+ #+RESULTS:
+ : {
+ :   "username": "thanks-tracker",
+ :   "text": "Here are all the people who have thanked you!\n| Thanker | Message |\n(| user2 | user1 for being awesome |)\n"
+ : }
+
+** User2 sees all thanks
+ #+BEGIN_SRC http :pretty
+ POST http://localhost:5000
+ Accept: application/json
+ Host: example.com
+ User-Agent: Go-http-client/1.1
  Accept: application/json
  Authorization: Token okwexkjpe7ygb8eq1ww58t483w
  Content-Type: application/x-www-form-urlencoded
@@ -86,12 +141,11 @@ POST http://localhost:5000
  text=gaelan+for+being+awesome&
  token=okwpppexkjpe7ygb8eq1ww58t483w&
  user_id=aoa1agao6t8fmx3ikt1j9w5ybw&
- user_name=somename
+ user_name=user2
  #+END_SRC
 
  #+RESULTS:
  : {
  :   "username": "thanks-tracker",
- :   "text": "Here are all the people who have thanked you!\n| Thanker | Message |\n(| somename | sample text |)\n"
+ :   "text": "Here are all the people who have thanked you!\n| Thanker | Message |\n| user1 | user2 for being awesome |\n"
  : }
-
